@@ -1,0 +1,602 @@
+{
+	"info": {
+		"_postman_id": "396c6ea8-ff0d-4649-9766-562b8ef958d1",
+		"name": "project 1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33421532"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"login\":\"admin@gmail.com\",\n    \"password\":\"admin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/auth/login",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/user/profile",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"user",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Usta",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"bekzod\",\n    \"phone\":\"+998990072778\",\n    \"products\":[\n        {\n            \"name\":\"name\",\n            \"quantity\":5,\n            \"price\":10\n        },\n         {\n            \"name\":\"name\",\n            \"quantity\":5,\n            \"price\":10\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/nasiya/create/usta",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"nasiya",
+								"create",
+								"usta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find all",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/nasiya/get/usta",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"nasiya",
+								"get",
+								"usta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findbyId",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/nasiya/get/usta/68653995c12772676da46292",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"nasiya",
+								"get",
+								"usta",
+								"68653995c12772676da46292"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"bekzod\",\n    \"phone\":\"+998990072778\",\n    \"products\":[\n        {\n            \"name\":\"name\",\n            \"quantity\":7,\n            \"price\":10\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/nasiya/update/usta/68656651771f82470575add6",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"nasiya",
+								"update",
+								"usta",
+								"68656651771f82470575add6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/nasiya/delete/usta/68653995c12772676da46292",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"nasiya",
+								"delete",
+								"usta",
+								"68653995c12772676da46292"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Klient",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"salom\",\n    \"phone\":\"+998990072778\",\n    \"products\":[\n        {\n            \"name\":\"name\",\n            \"quantity\":5,\n            \"price\":4\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/nasiya/create/klient",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"nasiya",
+								"create",
+								"klient"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find All",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/nasiya/get/klient",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"nasiya",
+								"get",
+								"klient"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/nasiya/get/klient/686558378e374332e44c8cfe",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"nasiya",
+								"get",
+								"klient",
+								"686558378e374332e44c8cfe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"salom\",\n    \"phone\":\"+998990072778\",\n    \"products\":[\n        {\n            \"name\":\"salom\",\n            \"quantity\":7,\n            \"price\":10\n        },\n         {\n            \"name\":\"salom\",\n            \"quantity\":7,\n            \"price\":10\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/nasiya/update/klient/686558348e374332e44c8cf9",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"nasiya",
+								"update",
+								"klient",
+								"686558348e374332e44c8cf9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/nasiya/delete/klient/686555e5be21f16b2a839d23",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"nasiya",
+								"delete",
+								"klient",
+								"686555e5be21f16b2a839d23"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Paid",
+			"item": [
+				{
+					"name": "paid product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"paid\":10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/paid/686558348e374332e44c8cf9/686558348e374332e44c8cfa/686558348e374332e44c8cfb",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"paid",
+								"686558348e374332e44c8cf9",
+								"686558348e374332e44c8cfa",
+								"686558348e374332e44c8cfb"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "paid purchase",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"paid\":40\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/paid/686558348e374332e44c8cf9/68656086956b08c6331c643f",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"paid",
+								"686558348e374332e44c8cf9",
+								"68656086956b08c6331c643f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "paid nasiya",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"paid\":70\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/paid/68656651771f82470575add6",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"paid",
+								"68656651771f82470575add6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Statistic",
+			"item": [
+				{
+					"name": "get admin's",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/statistic",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"statistic"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BASE_URL",
+			"value": "http://localhost:9000",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NjUzOTZmYzEyNzcyNjc2ZGE0NjI4OSIsImlhdCI6MTc1MTQ3MDc3NSwiZXhwIjoxNzU0MTQ5MTc1fQ.hyKAwGKlpMS4Ywb5m-cKbzgKDOulD6oQzso1YKH97DU",
+			"type": "string"
+		}
+	]
+}
