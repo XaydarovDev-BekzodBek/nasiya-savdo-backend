@@ -19,17 +19,11 @@ app.use(cors({ origin: "*", methods: ["POST", "GET", "PUT", "DELETE"] }));
 app.use("/auth", Auth);
 app.use("/user", User);
 app.use("/nasiya", Nasiya);
-
 app.use("/paid", Paid);
 app.use("/statistic", Statisic);
 
-const PORT = process.env.PORT || 9000;
-
-const StartServer = async () => {
+(async () => {
   try {
-    app.listen(PORT, () => {
-      console.log("server is running");
-    });
     await ConnectToMongodb();
 
     const admin = await userModel.findOne({ login: "admin@gmail.com" });
@@ -41,16 +35,13 @@ const StartServer = async () => {
         password: await hash("admin"),
         role: "admin",
       });
-      console.log("admin created");
+      console.log("Admin created");
     } else {
-      console.log("there is already admin");
+      console.log("Admin already exists");
     }
-  } catch (error) {
-    console.error(error);
+  } catch (err) {
+    console.error("DB connection error:", err);
   }
-};
+})();
 
-StartServer();
-
-
-module.exports = app
+module.exports = app;
