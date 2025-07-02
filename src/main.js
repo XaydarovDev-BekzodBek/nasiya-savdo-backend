@@ -19,6 +19,7 @@ app.use(cors({ origin: "*", methods: ["POST", "GET", "PUT", "DELETE"] }));
 app.use("/auth", Auth);
 app.use("/user", User);
 app.use("/nasiya", Nasiya);
+
 app.use("/paid", Paid);
 app.use("/statistic", Statisic);
 
