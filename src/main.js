@@ -51,3 +51,6 @@ const StartServer = async () => {
 };
 
 StartServer();
+
+
+module.exports = app
