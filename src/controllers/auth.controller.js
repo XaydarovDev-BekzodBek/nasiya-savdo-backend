@@ -26,7 +26,7 @@ exports.Login = async (req, res) => {
     return res.status(200).json({
       message: "login is successfully",
       success: true,
-      user: { ...user._doc, token },
+      token,
     });
   } catch (error) {
     return res.status(500).json({ message: error.message, success: false });

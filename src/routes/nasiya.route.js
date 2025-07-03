@@ -8,13 +8,14 @@ const {
   findOne,
   update,
   paidProduct,
+  updatePurchase,
 } = require("../controllers/nasiya.controller");
 const { validateMiddleware } = require("../middlewares/validation.middleware");
-const { nasiyaSchema } = require("../validations/nasiya.validation");
+const { nasiyaSchema, nasiyaPurchaseSchema } = require("../validations/nasiya.validation");
 const { tokenMiddleware } = require("../middlewares/token.middleware");
 const { isAdmin } = require("../middlewares/isuser.middleware");
 
-// post
+// usta
 router.post(
   "/create/usta",
   validateMiddleware(nasiyaSchema),
@@ -22,6 +23,25 @@ router.post(
   isAdmin,
   create("usta")
 );
+router.get("/get/usta", tokenMiddleware, isAdmin, findAll("usta"));
+router.get("/get/usta/:id", tokenMiddleware, isAdmin, findOne("usta"));
+router.put(
+  "/update/usta/:id/:purchaseId",
+  validateMiddleware(nasiyaPurchaseSchema),
+  tokenMiddleware,
+  isAdmin,
+  updatePurchase("usta")
+);
+router.put(
+  "/update/usta/:id",
+  validateMiddleware(nasiyaSchema),
+  tokenMiddleware,
+  isAdmin,
+  update("usta")
+);
+router.delete("/delete/usta/:id", tokenMiddleware, isAdmin, destroy("usta"));
+
+// klient
 router.post(
   "/create/klient",
   validateMiddleware(nasiyaSchema),
@@ -29,18 +49,15 @@ router.post(
   isAdmin,
   create("klient")
 );
-
-// get
-router.get("/get/usta", tokenMiddleware, isAdmin, findAll("usta"));
 router.get("/get/klient", tokenMiddleware, isAdmin, findAll("klient"));
-// byid
-router.get("/get/usta/:id", tokenMiddleware, isAdmin, findOne("usta"));
 router.get("/get/klient/:id", tokenMiddleware, isAdmin, findOne("klient"));
-// update
-router.put("/update/usta/:id", tokenMiddleware, isAdmin, update("usta"));
-router.put("/update/klient/:id", tokenMiddleware, isAdmin, update("klient"));
-// delete
-router.delete("/delete/usta/:id", tokenMiddleware, isAdmin, destroy("usta"));
+router.put(
+  "/update/klient/:id",
+  validateMiddleware(nasiyaSchema),
+  tokenMiddleware,
+  isAdmin,
+  update("klient")
+);
 router.delete("/delete/klient/:id", tokenMiddleware, isAdmin, destroy("usta"));
 
 module.exports = router;

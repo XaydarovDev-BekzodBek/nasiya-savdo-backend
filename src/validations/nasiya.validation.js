@@ -12,4 +12,14 @@ const nasiyaSchema = z.object({
   ),
 });
 
-module.exports = { nasiyaSchema };
+const nasiyaPurchaseSchema = z.object({
+  products: z.array(
+    z.object({
+      name: z.string(),
+      quantity: z.number(),
+      price: z.number(),
+    })
+  ),
+});
+
+module.exports = { nasiyaSchema, nasiyaPurchaseSchema };
