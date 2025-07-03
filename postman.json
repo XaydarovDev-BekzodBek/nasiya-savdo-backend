@@ -239,6 +239,46 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "update purchase",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"products\":[{\n        \"name\":\"name\",\n        \"quantity\":5,\n        \"price\":15\n    }]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/nasiya/update/usta/68656651771f82470575add6/686654cc6a4b791fb989bb30",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"nasiya",
+								"update",
+								"usta",
+								"68656651771f82470575add6",
+								"686654cc6a4b791fb989bb30"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -367,7 +407,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{BASE_URL}}/nasiya/update/klient/686558348e374332e44c8cf9",
+							"raw": "{{BASE_URL}}/nasiya/update/klient/686558378e374332e44c8cfe",
 							"host": [
 								"{{BASE_URL}}"
 							],
@@ -375,7 +415,7 @@
 								"nasiya",
 								"update",
 								"klient",
-								"686558348e374332e44c8cf9"
+								"686558378e374332e44c8cfe"
 							]
 						}
 					},
@@ -406,6 +446,46 @@
 								"delete",
 								"klient",
 								"686555e5be21f16b2a839d23"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update purchase",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"products\":[{\n        \"name\":\"name\",\n        \"quantity\":5,\n        \"price\":15\n    }]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/nasiya/update/klient/686558348e374332e44c8cf9/68656086956b08c6331c643f",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"nasiya",
+								"update",
+								"klient",
+								"686558348e374332e44c8cf9",
+								"68656086956b08c6331c643f"
 							]
 						}
 					},
@@ -597,6 +677,12 @@
 			"key": "token",
 			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NjUzOTZmYzEyNzcyNjc2ZGE0NjI4OSIsImlhdCI6MTc1MTQ3MDc3NSwiZXhwIjoxNzU0MTQ5MTc1fQ.hyKAwGKlpMS4Ywb5m-cKbzgKDOulD6oQzso1YKH97DU",
 			"type": "string"
+		},
+		{
+			"key": "BASE_URL",
+			"value": "https://nasiya-savdo-backend-s8ea.onrender.com",
+			"type": "string",
+			"disabled": true
 		}
 	]
 }

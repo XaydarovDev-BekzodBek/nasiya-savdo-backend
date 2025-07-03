@@ -11,7 +11,10 @@ const {
   updatePurchase,
 } = require("../controllers/nasiya.controller");
 const { validateMiddleware } = require("../middlewares/validation.middleware");
-const { nasiyaSchema, nasiyaPurchaseSchema } = require("../validations/nasiya.validation");
+const {
+  nasiyaSchema,
+  nasiyaPurchaseSchema,
+} = require("../validations/nasiya.validation");
 const { tokenMiddleware } = require("../middlewares/token.middleware");
 const { isAdmin } = require("../middlewares/isuser.middleware");
 
@@ -51,6 +54,13 @@ router.post(
 );
 router.get("/get/klient", tokenMiddleware, isAdmin, findAll("klient"));
 router.get("/get/klient/:id", tokenMiddleware, isAdmin, findOne("klient"));
+router.put(
+  "/update/klient/:id/:purchaseId",
+  validateMiddleware(nasiyaPurchaseSchema),
+  tokenMiddleware,
+  isAdmin,
+  updatePurchase("klient")
+);
 router.put(
   "/update/klient/:id",
   validateMiddleware(nasiyaSchema),
