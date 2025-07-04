@@ -12,7 +12,6 @@ const create = (type) => async (req, res) => {
     const oldNasiya = await nasiyaModel.findOne({
       username,
       phone,
-      type,
     });
     const totalQuantity = products.reduce((sum, p) => sum + p.quantity, 0);
     const totalPrice = products.reduce(
@@ -46,12 +45,7 @@ const create = (type) => async (req, res) => {
         .status(201)
         .json({ message: `${type} created`, success: true, [type]: newNasiya });
     } else {
-      if (oldNasiya.type !== type) {
-        return res.status(404).json({
-          success: false,
-          message: `${type} not found`,
-        });
-      }
+    
       const todayNasiya = oldNasiya.purchases.find(
         (i) => i.date >= todayStart && i.date <= todayEnd
       );
@@ -83,7 +77,7 @@ const create = (type) => async (req, res) => {
       }
       await oldNasiya.save();
       return res
-        .status(200)
+        .status(201)
         .json({ message: "ok", success: true, [type]: oldNasiya });
     }
   } catch (error) {

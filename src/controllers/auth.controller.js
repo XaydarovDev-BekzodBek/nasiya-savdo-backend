@@ -7,7 +7,6 @@ exports.Login = async (req, res) => {
     const { login, password } = req.body;
 
     const user = await userModel.findOne({ login });
-
     if (!user) {
       return res
         .status(404)

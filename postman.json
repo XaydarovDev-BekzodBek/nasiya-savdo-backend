@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "396c6ea8-ff0d-4649-9766-562b8ef958d1",
-		"name": "project 1",
+		"name": "nasiya savdo",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "33421532"
 	},
@@ -68,6 +68,43 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"admin123\",\n    \"login\":\"email@gmail.com\",\n    \"password\":\"admin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/user/profile",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"user",
+								"profile"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -91,7 +128,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"username\":\"bekzod\",\n    \"phone\":\"+998990072778\",\n    \"products\":[\n        {\n            \"name\":\"name\",\n            \"quantity\":5,\n            \"price\":10\n        },\n         {\n            \"name\":\"name\",\n            \"quantity\":5,\n            \"price\":10\n        }\n    ]\n}",
+							"raw": "{\n    \"username\":\"fsdfsd\",\n    \"phone\":\"+998990072777\",\n    \"products\":[\n        {\n            \"name\":\"name\",\n            \"quantity\":5,\n            \"price\":10\n        },\n         {\n            \"name\":\"name\",\n            \"quantity\":5,\n            \"price\":10\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -265,7 +302,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{BASE_URL}}/nasiya/update/usta/68656651771f82470575add6/686654cc6a4b791fb989bb30",
+							"raw": "{{BASE_URL}}/nasiya/update/usta/68656651771f82470575add6/68676bb774879bf8339a3810",
 							"host": [
 								"{{BASE_URL}}"
 							],
@@ -274,7 +311,7 @@
 								"update",
 								"usta",
 								"68656651771f82470575add6",
-								"686654cc6a4b791fb989bb30"
+								"68676bb774879bf8339a3810"
 							]
 						}
 					},
@@ -302,7 +339,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"username\":\"salom\",\n    \"phone\":\"+998990072778\",\n    \"products\":[\n        {\n            \"name\":\"name\",\n            \"quantity\":5,\n            \"price\":4\n        }\n    ]\n}",
+							"raw": "{\n    \"username\":\"bbbb\",\n    \"phone\":\"+998990072778\",\n    \"products\":[\n        {\n            \"name\":\"name\",\n            \"quantity\":5,\n            \"price\":4\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -675,7 +712,7 @@
 		},
 		{
 			"key": "token",
-			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NjUzOTZmYzEyNzcyNjc2ZGE0NjI4OSIsImlhdCI6MTc1MTQ3MDc3NSwiZXhwIjoxNzU0MTQ5MTc1fQ.hyKAwGKlpMS4Ywb5m-cKbzgKDOulD6oQzso1YKH97DU",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NjdlY2QyMzdiOGJiNWYzY2NiMTAyYyIsImlhdCI6MTc1MTY0MTMwNCwiZXhwIjoxNzU0MzE5NzA0fQ.HwT7nh3OF83Mbvo1pLK2mq8Lab5iBYO54XvRhBbU5t0",
 			"type": "string"
 		},
 		{

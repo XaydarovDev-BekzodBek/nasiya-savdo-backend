@@ -14,12 +14,11 @@ const Statisic = require("./routes/statistic.route");
 const app = express();
 
 app.use(express.json());
-app.use(cors({ origin: "*", methods: ["POST", "GET", "PUT", "DELETE"] }));
+app.use(cors({ methods: ["POST", "GET", "PUT", "DELETE"] }));
 
 app.use("/auth", Auth);
 app.use("/user", User);
 app.use("/nasiya", Nasiya);
-
 app.use("/paid", Paid);
 app.use("/statistic", Statisic);
 
@@ -32,13 +31,14 @@ const StartServer = async () => {
     });
     await ConnectToMongodb();
 
-    const admin = await userModel.findOne({ login: "admin@gmail.com" });
+    const admin = await userModel.findOne({ forfind: "admin@gmail.com?1" });
 
     if (!admin) {
       await userModel.create({
         username: "admin",
         login: "admin@gmail.com",
         password: await hash("admin"),
+        forfind: "admin@gmail.com?1",
         role: "admin",
       });
       console.log("admin created");
@@ -52,5 +52,4 @@ const StartServer = async () => {
 
 StartServer();
 
-
-module.exports = app
+module.exports = app;
