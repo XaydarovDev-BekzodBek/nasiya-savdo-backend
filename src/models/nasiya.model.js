@@ -14,6 +14,7 @@ const nasiyaSchema = new Schema(
             totalPrice: Number,
             debt: Number,
             paid: [{ price: Number, createdAt: Date }],
+            date: { type: Date, default: Date.now },
           },
         ],
         totalQuantity: Number,

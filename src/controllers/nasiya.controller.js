@@ -12,6 +12,7 @@ const create = (type) => async (req, res) => {
     const oldNasiya = await nasiyaModel.findOne({
       username,
       phone,
+      type
     });
     const totalQuantity = products.reduce((sum, p) => sum + p.quantity, 0);
     const totalPrice = products.reduce(

@@ -14,7 +14,7 @@ const Statisic = require("./routes/statistic.route");
 const app = express();
 
 app.use(express.json());
-app.use(cors({ methods: ["POST", "GET", "PUT", "DELETE"] }));
+app.use(cors({ origin: "*", methods: ["POST", "GET", "PUT", "DELETE"] }));
 
 app.use("/auth", Auth);
 app.use("/user", User);
