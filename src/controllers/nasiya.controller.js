@@ -3,14 +3,24 @@ const nasiyaModel = require("../models/nasiya.model");
 const create = (type) => async (req, res) => {
   try {
     const { username, phone, products } = req.body;
-    const oldUser = await nasiyaModel.findOne({ username, phone, type });
+    const todayStart = new Date();
+    todayStart.setHours(0, 0, 0, 0);
+
+    const todayEnd = new Date();
+    todayEnd.setHours(23, 59, 59, 999);
+
+    const oldNasiya = await nasiyaModel.findOne({
+      username,
+      phone,
+      type,
+    });
     const totalQuantity = products.reduce((sum, p) => sum + p.quantity, 0);
     const totalPrice = products.reduce(
       (sum, p) => sum + p.price * p.quantity,
       0
     );
     const totalDebt = totalPrice;
-    if (!oldUser) {
+    if (!oldNasiya) {
       const newNasiya = new nasiyaModel({
         username,
         phone,
@@ -36,28 +46,45 @@ const create = (type) => async (req, res) => {
         .status(201)
         .json({ message: `${type} created`, success: true, [type]: newNasiya });
     } else {
-      if (oldUser.type !== type) {
+      if (oldNasiya.type !== type) {
         return res.status(404).json({
           success: false,
           message: `${type} not found`,
         });
       }
-      oldUser.purchases.push({
-        date: new Date(),
-        products: products.map((p) => ({
-          ...p,
-          totalPrice: p.price * p.quantity,
-          debt: p.price * p.quantity,
-          paid: [],
-        })),
-        totalQuantity,
-        totalPrice,
-        totalDebt,
-      });
-      await oldUser.save();
+      const todayNasiya = oldNasiya.purchases.find(
+        (i) => i.date >= todayStart && i.date <= todayEnd
+      );
+      if (!todayNasiya) {
+        oldNasiya.purchases.push({
+          date: new Date(),
+          products: products.map((p) => ({
+            ...p,
+            totalPrice: p.price * p.quantity,
+            debt: p.price * p.quantity,
+            paid: [],
+          })),
+          totalQuantity,
+          totalPrice,
+          totalDebt,
+        });
+      } else {
+        todayNasiya.products.push(
+          ...products.map((p) => ({
+            ...p,
+            totalPrice: p.price * p.quantity,
+            debt: p.price * p.quantity,
+            paid: [],
+          }))
+        );
+        todayNasiya.totalQuantity = totalQuantity + todayNasiya.totalQuantity;
+        todayNasiya.totalPrice = totalPrice + todayNasiya.totalPrice;
+        todayNasiya.totalDebt = totalDebt + todayNasiya.totalDebt;
+      }
+      await oldNasiya.save();
       return res
         .status(200)
-        .json({ message: "ok", success: true, [type]: oldUser });
+        .json({ message: "ok", success: true, [type]: oldNasiya });
     }
   } catch (error) {
     return res.status(500).json({ message: error.message, success: false });
@@ -219,7 +246,7 @@ const updatePurchase = (type) => async (req, res) => {
     purchase.totalDebt = totalDebt;
     purchase.totalQuantity = totalQuantity;
     purchase.totalPrice = totalPrice;
-    purchase.date = new Date()
+    purchase.date = new Date();
     await nasiya.save();
     return res.status(200).json({
       success: true,
